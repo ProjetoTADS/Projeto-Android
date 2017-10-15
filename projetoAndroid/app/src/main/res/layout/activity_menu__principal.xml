@@ -12,16 +12,27 @@
         android:layout_height="47dp"
         android:onClick="onClick"
         android:text="CADASTRAR"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="142dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="74dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.501" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="57dp"
+        android:layout_marginTop="55dp"
         android:onClick="onClick2"
         android:text="LISTAR TUDO"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        tools:layout_editor_absoluteX="148dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.086" />
 </android.support.constraint.ConstraintLayout>

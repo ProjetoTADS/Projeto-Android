@@ -1,11 +1,15 @@
 package com.example.crowwinter.projetoandroid;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
-public class Menu_Principal extends AppCompatActivity {
+public class Menu_Principal extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
