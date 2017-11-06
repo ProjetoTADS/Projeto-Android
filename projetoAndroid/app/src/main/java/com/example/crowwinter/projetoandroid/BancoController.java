@@ -33,7 +33,7 @@ public class BancoController {
 
         db.close();
 
-        if (resultado ==-1){
+        if (resultado == -1){
             return "Erro ao inserir registro";
         }
         else{
