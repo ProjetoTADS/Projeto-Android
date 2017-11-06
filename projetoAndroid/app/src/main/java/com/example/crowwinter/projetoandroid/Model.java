@@ -17,7 +17,7 @@ public class Model extends SQLiteOpenHelper {
     public static final String EMAIL = "email";
     public static final String TELEFONE = "telefone";
     public static final String NASCIMENTO = "nascimento";
-    private static final int VERSAO = 1;
+    private static final int VERSAO = 4;
 
     //CONSTRUTOR
     public Model(Context context) {
@@ -30,21 +30,18 @@ public class Model extends SQLiteOpenHelper {
 
         String sql = " CREATE TABLE IF NOT EXISTS " +TABELA+ "("
                 + ID + " integer primary key autoincrement,"
-
                 + NOME + " text,"
                 + EMAIL + " text,"
                 + TELEFONE + " text,"
-                + NASCIMENTO + " text"
-                +")";
+                + NASCIMENTO + " text "
+                + ")";
         db.execSQL(sql);
     }
 
     @Override
-
-
-
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int i, int i4) {
         db.execSQL(" DROP TABLE IF EXISTS " + TABELA);
         onCreate(db);
     }
+
 }

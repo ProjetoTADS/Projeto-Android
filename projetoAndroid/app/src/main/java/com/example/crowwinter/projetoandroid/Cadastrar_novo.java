@@ -44,9 +44,25 @@ public class Cadastrar_novo extends AppCompatActivity {
                 String telefoneString = telefone.getText().toString();
                 String nascimentoString = nascimento.getText().toString();
 
+                if(nomeString.equals("")){
+                    Toast.makeText(Cadastrar_novo.this,"Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
+                }
+                else if (emailString.equals("")){
+                    Toast.makeText(Cadastrar_novo.this,"Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
+                }
+                else if (telefoneString.equals("")){
+                    Toast.makeText(Cadastrar_novo.this,"Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
+                }
+                else if (nascimentoString.equals("")){
+                    Toast.makeText(Cadastrar_novo.this,"Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
                 resultado = crud.insereUsuario(nomeString,emailString,telefoneString, nascimentoString);
 
-                Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
+               Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
 
             }
         });
