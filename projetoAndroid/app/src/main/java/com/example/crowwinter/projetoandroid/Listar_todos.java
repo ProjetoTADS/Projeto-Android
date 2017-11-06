@@ -29,8 +29,8 @@ public class Listar_todos extends AppCompatActivity {
         BancoController crud = new BancoController(getApplicationContext());
         Cursor cursor = crud.carregaDados();
 
-        String[] nomeCampos = new String[]{Model.NOME,Model.EMAIL,Model.TELEFONE,Model.NASCIMENTO};
-        int[] idViews = new int[]{android.R.id.text1,android.R.id.text1,android.R.id.text1,android.R.id.text1};
+        String[] nomeCampos = new String[]{Model.NOME};
+        int[] idViews = new int[]{android.R.id.text1};
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),
                 android.R.layout.simple_list_item_1,
@@ -42,33 +42,33 @@ public class Listar_todos extends AppCompatActivity {
         listaitens = (ListView) findViewById(R.id.listViewID);
         listaitens.setAdapter(adapter);
 
-//        listaitens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        listaitens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 //                int codigoPosicao = i;
 //                String valorClicado = (String) listaitens.getItemAtPosition(codigoPosicao);
 //                Toast.makeText(getApplicationContext(),valorClicado,Toast.LENGTH_SHORT).show();
-//                dialog = new AlertDialog.Builder(Listar_todos.this);
-//                dialog.setTitle("Teste");
-//                dialog.setMessage("BLbalablab");
-//                dialog.setNegativeButton("Nao", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        Toast.makeText(Listar_todos.this, "Pressionou botao nao",Toast.LENGTH_SHORT).show();
-//
-//                    }
-//                });
-//                dialog.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        Toast.makeText(Listar_todos.this, "Pressionou o botao Sim",Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                dialog.create();
-//                dialog.show();
-//
-//            }
-//        });
+                dialog = new AlertDialog.Builder(Listar_todos.this);
+                dialog.setTitle("Teste");
+                dialog.setMessage("BLbalablab");
+                dialog.setNegativeButton("Nao", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(Listar_todos.this, "Pressionou botao nao",Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+                dialog.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(Listar_todos.this, "Pressionou o botao Sim",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialog.create();
+                dialog.show();
+
+            }
+        });
     }
 
 }

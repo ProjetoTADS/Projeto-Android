@@ -49,7 +49,7 @@ public class BancoController {
 
     public Cursor carregaDados(){
         Cursor cursor;
-        String[] campos = {"_id","nome","email","telefone","nascimento"} ;
+        String[] campos = {"_id","nome"} ;
         db = banco.getReadableDatabase();
         cursor = db.query(true,"usuarios",campos , null, null, null, null, null, null);
 
