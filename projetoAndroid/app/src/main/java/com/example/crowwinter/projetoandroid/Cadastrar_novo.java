@@ -65,9 +65,7 @@ public class Cadastrar_novo extends AppCompatActivity {
             }
         });
 
-
     }
-
     public void onClickVoltar (View v){
         Intent i = new Intent(this, Menu_Principal.class);
         startActivity(i);

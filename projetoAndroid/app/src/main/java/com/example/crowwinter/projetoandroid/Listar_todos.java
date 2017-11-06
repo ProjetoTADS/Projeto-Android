@@ -32,7 +32,7 @@ public class Listar_todos extends AppCompatActivity {
         int[] idViews = new int[]{R.id.txtNome,R.id.txtEmail,R.id.txtTelefone,R.id.txtNascimento};
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),
-                R.layout.activity_listar_todos,
+                R.layout.support_simple_spinner_dropdown_item,
                 cursor,
                 nomeCampos,
                 idViews,
