@@ -12,7 +12,7 @@ public class Model extends SQLiteOpenHelper {
 
     private static final String NOME_BANCO = "banco.db";
     public static final String TABELA = "usuarios";
-    public static final String ID = "id";
+    public static final String ID = "_id";
     public static final String NOME = "nome";
     public static final String EMAIL = "email";
     public static final String TELEFONE = "telefone";

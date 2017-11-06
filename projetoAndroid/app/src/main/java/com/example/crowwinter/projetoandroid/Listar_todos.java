@@ -29,13 +29,13 @@ public class Listar_todos extends AppCompatActivity {
         Cursor cursor = crud.carregaDados();
 
         String[] nomeCampos = new String[]{Model.ID, Model.NOME, Model.EMAIL, Model.TELEFONE, Model.NASCIMENTO};
-        int[] idViews = new int[]{R.id.txtNome,R.id.txtEmail,R.id.txtTelefone,R.id.txtNascimento};
+//        int[] idViews = new int[]{R.id.txtNome,R.id.txtEmail,R.id.txtTelefone,R.id.txtNascimento};
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),
                 R.layout.support_simple_spinner_dropdown_item,
                 cursor,
                 nomeCampos,
-                idViews,
+                null,
                 0
         );
         listaitens = (ListView) findViewById(R.id.listViewID);
