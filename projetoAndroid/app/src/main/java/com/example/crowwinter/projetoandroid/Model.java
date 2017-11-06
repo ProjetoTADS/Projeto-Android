@@ -12,7 +12,7 @@ public class Model extends SQLiteOpenHelper {
 
     private static final String NOME_BANCO = "banco.db";
     public static final String TABELA = "usuarios";
-    public static final String ID = "_id";
+    public static final String ID = "id";
     public static final String NOME = "nome";
     public static final String EMAIL = "email";
     public static final String TELEFONE = "telefone";
@@ -38,12 +38,9 @@ public class Model extends SQLiteOpenHelper {
     }
 
     @Override
-<<<<<<< HEAD
 
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-=======
     public void onUpgrade(SQLiteDatabase db, int i, int i4) {
->>>>>>> 2dfe754879df8befcb063334efcee36f4192e3b6
+
         db.execSQL(" DROP TABLE IF EXISTS " + TABELA);
         onCreate(db);
     }

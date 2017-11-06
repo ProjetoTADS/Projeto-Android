@@ -58,8 +58,6 @@ public class Cadastrar_novo extends AppCompatActivity {
                 }
 
 
-
-
                 resultado = crud.insereUsuario(nomeString,emailString,telefoneString, nascimentoString);
 
                Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();

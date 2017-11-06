@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 
 public class Listar_todos extends AppCompatActivity {
-    public BancoController bd = new BancoController(getApplicationContext());
     private ListView listaitens;
     private AlertDialog.Builder dialog;
     private String[] itens = {"anderson", "915125292", "uninove e '10' "};
@@ -26,18 +25,19 @@ public class Listar_todos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_todos);
 
-        BancoController crud = new BancoController(getBaseContext());
+        BancoController crud = new BancoController(getApplicationContext());
         Cursor cursor = crud.carregaDados();
 
         String[] nomeCampos = new String[]{Model.ID, Model.NOME, Model.EMAIL, Model.TELEFONE, Model.NASCIMENTO};
-        int[] idViews = new int[]{R.id.txtNome};
+        int[] idViews = new int[]{R.id.txtNome,R.id.txtEmail,R.id.txtTelefone,R.id.txtNascimento};
 
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getBaseContext(),
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),
                 R.layout.activity_listar_todos,
                 cursor,
                 nomeCampos,
-                null,
-                0);
+                idViews,
+                0
+        );
         listaitens = (ListView) findViewById(R.id.listViewID);
         listaitens.setAdapter(adapter);
     }

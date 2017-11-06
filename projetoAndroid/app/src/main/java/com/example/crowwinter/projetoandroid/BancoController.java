@@ -33,7 +33,7 @@ public class BancoController {
         valores.put(Model.TELEFONE, telefone);
         valores.put(Model.NASCIMENTO, nascimento);
 
-        resultado = db.insert(Model.TABELA, "null", valores);
+        resultado = db.insertOrThrow(Model.TABELA, "null", valores);
 
 
         db.close();
@@ -47,7 +47,7 @@ public class BancoController {
 
     public Cursor carregaDados(){
         Cursor cursor;
-        String[] campos =  {Model.NOME,Model.EMAIL,Model.TELEFONE,Model.NASCIMENTO};
+        String[] campos =  {banco.NOME,banco.EMAIL,banco.TELEFONE,banco.NASCIMENTO};
         db = banco.getReadableDatabase();
         cursor = db.query(Model.TABELA, campos, null, null, null, null, null, null);
 
