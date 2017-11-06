@@ -27,13 +27,10 @@ public class Model extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-<<<<<<< HEAD
-        String sql = "CREATE TABLE usuarios("
-                + ID + " integer primary key autoincrement, "
-=======
+
         String sql = " CREATE TABLE IF NOT EXISTS " +TABELA+ "("
                 + ID + " integer primary key autoincrement,"
->>>>>>> aeb6b87049a44847e5cf51ec8d0641c59839e556
+
                 + NOME + " text,"
                 + EMAIL + " text,"
                 + TELEFONE + " text,"
@@ -43,11 +40,10 @@ public class Model extends SQLiteOpenHelper {
     }
 
     @Override
-<<<<<<< HEAD
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-=======
+
+
+
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
->>>>>>> aeb6b87049a44847e5cf51ec8d0641c59839e556
         db.execSQL(" DROP TABLE IF EXISTS " + TABELA);
         onCreate(db);
     }
