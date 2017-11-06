@@ -4,7 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.midi.MidiOutputPort;
 import android.util.Log;
+import android.view.Display;
 
 /**
  * Created by eduardo on 15/10/17.
@@ -39,7 +41,7 @@ public class BancoController {
         db.close();
 
         if (resultado == -1) {
-            return String.valueOf(resultado);
+            return "Usario nao cadastrado";
         } else {
             return "Usuario cadastrado";
         }
@@ -47,13 +49,11 @@ public class BancoController {
 
     public Cursor carregaDados(){
         Cursor cursor;
-        String[] campos =  {banco.ID,banco.NOME,banco.EMAIL,banco.TELEFONE,banco.NASCIMENTO};
+        String[] campos = {"_id","nome","email","telefone","nascimento"} ;
         db = banco.getReadableDatabase();
-        cursor = db.query(Model.TABELA, campos, null, null, null, null, null, null);
+        cursor = db.query(true,"usuarios",campos , null, null, null, null, null, null);
 
-        if(cursor!=null){
-            cursor.moveToFirst();
-        }
+        cursor.moveToFirst();
         db.close();
         return cursor;
     }
