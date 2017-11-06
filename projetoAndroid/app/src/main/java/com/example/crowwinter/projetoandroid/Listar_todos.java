@@ -1,28 +1,29 @@
 package com.example.crowwinter.projetoandroid;
 
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class Listar_todos extends AppCompatActivity {
 
+
+public class Listar_todos extends AppCompatActivity {
+    public BancoController bd = new BancoController(getApplicationContext());
     private ListView listaitens;
     private AlertDialog.Builder dialog;
-    private String[] itens = {
-            "Anderson F Lima","915125292","Uninove E '10'"
-    };
+    private String[] itens;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_todos);
-
 
         listaitens = (ListView) findViewById(R.id.listViewID);
 
