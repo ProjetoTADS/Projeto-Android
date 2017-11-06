@@ -27,8 +27,10 @@ public class Model extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+
         String sql = " CREATE TABLE IF NOT EXISTS " +TABELA+ "("
                 + ID + " integer primary key autoincrement,"
+
                 + NOME + " text,"
                 + EMAIL + " text,"
                 + TELEFONE + " text,"
@@ -38,6 +40,9 @@ public class Model extends SQLiteOpenHelper {
     }
 
     @Override
+
+
+
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL(" DROP TABLE IF EXISTS " + TABELA);
         onCreate(db);
