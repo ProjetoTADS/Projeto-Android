@@ -2,8 +2,9 @@ package com.example.crowwinter.projetoandroid;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
+import android.util.Log;
 
 /**
  * Created by eduardo on 15/10/17.
@@ -12,14 +13,15 @@ import android.widget.Toast;
 public class BancoController {
     private SQLiteDatabase db;
     private Model banco;
-
     long resultado;
+    String[] place;
 
-    public BancoController(Context context){
+    public BancoController(Context context) {
         banco = new Model(context);
     }
 
-    public String insereUsuario(String nome, String email, String telefone, String nascimento){
+
+    public String insereUsuario(String nome, String email, String telefone, String nascimento) {
         ContentValues valores;
 
         db = banco.getWritableDatabase();
@@ -31,23 +33,28 @@ public class BancoController {
         valores.put(Model.TELEFONE, telefone);
         valores.put(Model.NASCIMENTO, nascimento);
 
-       resultado = db.insert(Model.TABELA, "null", valores);
+        resultado = db.insert(Model.TABELA, "null", valores);
+
 
         db.close();
 
-        if (resultado == -1){
+        if (resultado == -1) {
             return String.valueOf(resultado);
-        }
-
-        else {
+        } else {
             return "Usuario cadastrado";
         }
     }
-//    public  String listAll(){
-//
-//        db = banco.getWritableDatabase();
-//
-//        resultado = db.rawQuery("SELECT * FROM usuarios",null);
 
-//    }
+    public Cursor carregaDados(){
+        Cursor cursor;
+        String[] campos =  {Model.NOME,Model.EMAIL,Model.TELEFONE,Model.NASCIMENTO};
+        db = banco.getReadableDatabase();
+        cursor = db.query(Model.TABELA, campos, null, null, null, null, null, null);
+
+        if(cursor!=null){
+            cursor.moveToFirst();
+        }
+        db.close();
+        return cursor;
+    }
 }
