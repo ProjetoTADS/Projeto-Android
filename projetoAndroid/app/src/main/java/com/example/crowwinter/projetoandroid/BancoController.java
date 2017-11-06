@@ -33,12 +33,15 @@ public class BancoController {
         valores.put(Model.TELEFONE, telefone);
         valores.put(Model.NASCIMENTO, nascimento);
 
-        resultado = db.insert(Model.TABELA, null, valores);
+        resultado = db.insert(Model.TABELA, "null", valores);
+
+
+        db.close();
 
         if (resultado == -1) {
-            return " Erro ao inserir registro ";
+            return String.valueOf(resultado);
         } else {
-            return " Usuário inserido com sucesso! ";
+            return "Usuario cadastrado";
         }
     }
 
