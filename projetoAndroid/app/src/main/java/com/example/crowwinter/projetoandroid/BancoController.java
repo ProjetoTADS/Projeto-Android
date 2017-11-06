@@ -3,6 +3,7 @@ package com.example.crowwinter.projetoandroid;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 /**
  * Created by eduardo on 15/10/17.
@@ -12,13 +13,14 @@ public class BancoController {
     private SQLiteDatabase db;
     private Model banco;
 
+    long resultado;
+
     public BancoController(Context context){
         banco = new Model(context);
     }
 
     public String insereUsuario(String nome, String email, String telefone, String nascimento){
         ContentValues valores;
-        long resultado;
 
         db = banco.getWritableDatabase();
 
@@ -33,13 +35,18 @@ public class BancoController {
 
         db.close();
 
-        if (resultado ==-1){
+        if (resultado == -1){
             return "Erro ao inserir registro";
         }
-        else{
+        else {
             return "Usuário inserido com sucesso!";
         }
     }
+//    public  String listAll(){
+//
+//        db = banco.getWritableDatabase();
+//
+//        resultado = db.rawQuery("SELECT * FROM usuarios",null);
 
-
+//    }
 }
