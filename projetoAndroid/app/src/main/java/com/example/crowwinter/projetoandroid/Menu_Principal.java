@@ -27,7 +27,6 @@ public class Menu_Principal extends Activity {
         Intent intent = new Intent(this,Listar_todos.class);
         startActivity(intent);
 
-
     }
 
 

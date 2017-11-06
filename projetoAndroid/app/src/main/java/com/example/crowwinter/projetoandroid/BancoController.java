@@ -14,7 +14,7 @@ public class BancoController {
     private SQLiteDatabase db;
     private Model banco;
     long resultado;
-    String[] data;
+    String[] place;
 
     public BancoController(Context context) {
         banco = new Model(context);
@@ -42,15 +42,16 @@ public class BancoController {
         }
     }
 
-    public void listAll() {
-        Cursor cursor = db.rawQuery("SELECT * FROM usuarios", null);
+    public Cursor carregaDados(){
+        Cursor cursor;
+        String[] campos =  {Model.NOME,Model.EMAIL,Model.TELEFONE,Model.NASCIMENTO};
+        db = banco.getReadableDatabase();
+        cursor = db.query(Model.TABELA, campos, null, null, null, null, null, null);
 
-        int indiceColuna = cursor.getColumnIndex("NOME");
-        cursor.moveToFirst();
-        while (cursor != null) {
-            Log.i("NOME", cursor.getString(indiceColuna));
-            cursor.moveToNext();
+        if(cursor!=null){
+            cursor.moveToFirst();
         }
+        db.close();
+        return cursor;
     }
-
 }
