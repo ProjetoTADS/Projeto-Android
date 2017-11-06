@@ -30,7 +30,7 @@ public class Listar_todos extends AppCompatActivity {
         Cursor cursor = crud.carregaDados();
 
         String[] nomeCampos = new String[]{Model.NOME,Model.EMAIL,Model.TELEFONE,Model.NASCIMENTO};
-        int[] idViews = new int[]{R.id.txtNome,R.id.txtEmail,R.id.txtTelefone,R.id.txtNascimento};
+        int[] idViews = new int[]{android.R.id.text1,android.R.id.text1,android.R.id.text1,android.R.id.text1};
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),
                 android.R.layout.simple_list_item_1,

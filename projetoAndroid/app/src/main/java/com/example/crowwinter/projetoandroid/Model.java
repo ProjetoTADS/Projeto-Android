@@ -31,7 +31,7 @@ public class Model extends SQLiteOpenHelper {
                 + ID + " integer primary key autoincrement,"
                 + NOME + " text,"
                 + EMAIL + " text,"
-                + TELEFONE + " text ,"
+                + TELEFONE + " text,"
                 + NASCIMENTO + " text "
                 + ")";
         db.execSQL(sql);

@@ -54,6 +54,10 @@ public class BancoController {
         cursor = db.query(true,"usuarios",campos , null, null, null, null, null, null);
 
         cursor.moveToFirst();
+        if(cursor!=null) {
+            cursor.moveToNext();
+        }
+
         db.close();
         return cursor;
     }
