@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Model extends SQLiteOpenHelper {
 
-    private static final String NOME_BANCO = "banco.db";
+    public static final String NOME_BANCO = "banco.db";
     public static final String TABELA = "usuarios";
     public static final String ID = "_id";
     public static final String NOME = "nome";

@@ -2,6 +2,7 @@ package com.example.crowwinter.projetoandroid;
 
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,14 +13,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
+
 
 
 
 public class Listar_todos extends AppCompatActivity {
     private ListView listaitens;
     private AlertDialog.Builder dialog;
-    private String[] itens = {"anderson", "915125292", "uninove e '10' "};
+    private String[] itens;
+    private SQLiteDatabase bd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,38 +31,46 @@ public class Listar_todos extends AppCompatActivity {
         setContentView(R.layout.activity_listar_todos);
 
         BancoController crud = new BancoController(getApplicationContext());
-        Cursor cursor = crud.carregaDados();
 
-        String[] nomeCampos = new String[]{Model.NOME};
-        int[] idViews = new int[]{android.R.id.text1};
+        itens = crud.carregaDados();
 
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),
-                android.R.layout.simple_list_item_1,
-                cursor,
-                nomeCampos,
-                idViews
-        );
+        bd = openOrCreateDatabase(Model.NOME_BANCO, MODE_PRIVATE, null);
 
         listaitens = (ListView) findViewById(R.id.listViewID);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                getApplicationContext(),
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                itens
+        );
+
         listaitens.setAdapter(adapter);
 
         listaitens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                int codigoPosicao = i;
-//                String valorClicado = (String) listaitens.getItemAtPosition(codigoPosicao);
-//                Toast.makeText(getApplicationContext(),valorClicado,Toast.LENGTH_SHORT).show();
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                int codigoPosicao = i;
+
+                final String valorClicado = (String) listaitens.getItemAtPosition(codigoPosicao);
+
+
+
+                Toast.makeText(getApplicationContext(),valorClicado,Toast.LENGTH_SHORT).show();
                 dialog = new AlertDialog.Builder(Listar_todos.this);
-                dialog.setTitle("Teste");
-                dialog.setMessage("BLbalablab");
-                dialog.setNegativeButton("Nao", new DialogInterface.OnClickListener() {
+                dialog.setTitle("SELECIONE A AÇÃO QUE DESEJA REALIZAR:");
+                dialog.setMessage("VOCÊ PODERÁ EXCLUIR ESTE USUÁRIO OU VER OS DADOS E ALTERÁ=LOS.");
+                dialog.setNegativeButton("EXCLUIR USUÁRIO", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(Listar_todos.this, "Pressionou botao nao",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Listar_todos.this, "Usuários Excluido com sucesso!",Toast.LENGTH_SHORT).show();
 
-                    }
+                        bd.execSQL("DELETE FROM usuarios WHERE nome = '" + valorClicado + "'");
+
+
+                        onCreate();
+                }
                 });
-                dialog.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                dialog.setPositiveButton("VER DADOS", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(Listar_todos.this, "Pressionou o botao Sim",Toast.LENGTH_SHORT).show();
@@ -66,48 +78,7 @@ public class Listar_todos extends AppCompatActivity {
                 });
                 dialog.create();
                 dialog.show();
-
             }
         });
     }
-
 }
-
-//        listaitens = (ListView) findViewById(R.id.listViewID);
-//
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-//                getApplicationContext(),
-//                android.R.layout.simple_list_item_1,
-//                android.R.id.text1,
-//                itens
-//        );
-//
-//        listaitens.setAdapter(adapter);
-//
-//        listaitens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                int codigoPosicao = i;
-//                String valorClicado = (String) listaitens.getItemAtPosition(codigoPosicao);
-//                Toast.makeText(getApplicationContext(),valorClicado,Toast.LENGTH_SHORT).show();
-//                dialog = new AlertDialog.Builder(Listar_todos.this);
-//                dialog.setTitle("Teste");
-//                dialog.setMessage("BLbalablab");
-//                dialog.setNegativeButton("Nao", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        Toast.makeText(Listar_todos.this, "Pressionou botao nao",Toast.LENGTH_SHORT).show();
-//
-//                    }
-//                });
-//                dialog.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        Toast.makeText(Listar_todos.this, "Pressionou o botao Sim",Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                dialog.create();
-//                dialog.show();
-//            }
-//        });
-//    }
-//}

@@ -8,6 +8,8 @@ import android.media.midi.MidiOutputPort;
 import android.util.Log;
 import android.view.Display;
 
+import static android.content.ContentValues.TAG;
+
 /**
  * Created by eduardo on 15/10/17.
  */
@@ -47,18 +49,24 @@ public class BancoController {
         }
     }
 
-    public Cursor carregaDados(){
+    public String[] carregaDados(){
         Cursor cursor;
-        String[] campos = {"_id","nome"} ;
+        String[] campos = {"nome"} ;
         db = banco.getReadableDatabase();
         cursor = db.query(true,"usuarios",campos , null, null, null, null, null, null);
 
+
+        String array[] = new String[cursor.getCount()];
+        int i=0;
         cursor.moveToFirst();
-        if(cursor!=null) {
+        while(!cursor.isAfterLast()){
+            array[i]=cursor.getString(0);
+            i++;
             cursor.moveToNext();
         }
-
+        cursor.close();
         db.close();
-        return cursor;
+
+        return array;
     }
 }
