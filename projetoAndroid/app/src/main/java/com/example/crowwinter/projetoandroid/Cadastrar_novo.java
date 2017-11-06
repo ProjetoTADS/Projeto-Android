@@ -23,11 +23,6 @@ public class Cadastrar_novo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_novo);
 
-
-        nome = (EditText) findViewById(R.id.txtNome);
-        email = (EditText) findViewById(R.id.txtEmail);
-        telefone = (EditText) findViewById(R.id.txtTelefone);
-        nascimento = (EditText) findViewById(R.id.txtNascimento);
         btnCadastrar = (Button) findViewById(R.id.btn_cadastrar);
         btnVoltar = (Button) findViewById(R.id.btn_voltar);
 
@@ -38,6 +33,11 @@ public class Cadastrar_novo extends AppCompatActivity {
             public void onClick(View view) {
                 BancoController crud = new BancoController(getBaseContext());
                 String resultado;
+
+                nome = (EditText) findViewById(R.id.txtNome);
+                email = (EditText) findViewById(R.id.txtEmail);
+                telefone = (EditText) findViewById(R.id.txtTelefone);
+                nascimento = (EditText) findViewById(R.id.txtNascimento);
 
                 String nomeString = nome.getText().toString();
                 String emailString = email.getText().toString();
@@ -53,9 +53,6 @@ public class Cadastrar_novo extends AppCompatActivity {
 
 
     }
-
-
-
 
     public void onClickVoltar (View v){
         Intent i = new Intent(this, Menu_Principal.class);

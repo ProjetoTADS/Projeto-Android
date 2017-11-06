@@ -19,35 +19,39 @@ public class Listar_todos extends AppCompatActivity {
     public BancoController bd = new BancoController(getApplicationContext());
     private ListView listaitens;
     private AlertDialog.Builder dialog;
-    private String[] itens;
+    private String[] itens = {"anderson", "915125292", "uninove e '10' "};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_todos);
 
-//        listaitens = (ListView) findViewById(R.id.listViewID);
-
-
         BancoController crud = new BancoController(getBaseContext());
         Cursor cursor = crud.carregaDados();
 
-        String[] nomeCampos = new String[] {Model.NOME, Model.EMAIL, Model.TELEFONE, Model.NASCIMENTO};
-        int[] idViews = new int[] {R.id.txtNome};
+        String[] nomeCampos = new String[]{Model.ID, Model.NOME, Model.EMAIL, Model.TELEFONE, Model.NASCIMENTO};
+        int[] idViews = new int[]{R.id.txtNome};
 
-        SimpleCursorAdapter adaptador = new SimpleCursorAdapter(getBaseContext(),
-                R.layout.activity_listar_todos,cursor,nomeCampos,idViews, 0);
-        listaitens = (ListView)findViewById(R.id.listViewID);
-        listaitens.setAdapter(adaptador);
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getBaseContext(),
+                R.layout.activity_listar_todos,
+                cursor,
+                nomeCampos,
+                null,
+                0);
+        listaitens = (ListView) findViewById(R.id.listViewID);
+        listaitens.setAdapter(adapter);
     }
+}
 
+//        listaitens = (ListView) findViewById(R.id.listViewID);
+//
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
 //                getApplicationContext(),
 //                android.R.layout.simple_list_item_1,
 //                android.R.id.text1,
 //                itens
 //        );
-
+//
 //        listaitens.setAdapter(adapter);
 //
 //        listaitens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -75,5 +79,5 @@ public class Listar_todos extends AppCompatActivity {
 //                dialog.show();
 //            }
 //        });
-////    }
-}
+//    }
+//}
