@@ -62,11 +62,16 @@ public class Cadastrar_novo extends AppCompatActivity {
 
                Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
 
+                finish();
+                Intent intent = new Intent(getApplicationContext(),Listar_todos.class);
+                startActivity(intent);
+
             }
         });
 
     }
     public void onClickVoltar (View v){
+        finish();
         Intent i = new Intent(this, Menu_Principal.class);
         startActivity(i);
 

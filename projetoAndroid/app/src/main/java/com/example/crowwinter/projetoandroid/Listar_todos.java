@@ -1,6 +1,7 @@
 package com.example.crowwinter.projetoandroid;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
@@ -16,7 +17,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import java.lang.reflect.Array;
 
 
 public class Listar_todos extends AppCompatActivity {
@@ -55,7 +56,6 @@ public class Listar_todos extends AppCompatActivity {
 
 
 
-                Toast.makeText(getApplicationContext(),valorClicado,Toast.LENGTH_SHORT).show();
                 dialog = new AlertDialog.Builder(Listar_todos.this);
                 dialog.setTitle("SELECIONE A AÇÃO QUE DESEJA REALIZAR:");
                 dialog.setMessage("VOCÊ PODERÁ EXCLUIR ESTE USUÁRIO OU VER OS DADOS E ALTERÁ=LOS.");
@@ -65,15 +65,48 @@ public class Listar_todos extends AppCompatActivity {
                         Toast.makeText(Listar_todos.this, "Usuários Excluido com sucesso!",Toast.LENGTH_SHORT).show();
 
                         bd.execSQL("DELETE FROM usuarios WHERE nome = '" + valorClicado + "'");
+                        bd.close();
 
+                        finish();
+                        Intent intent = new Intent(getApplicationContext(),Listar_todos.class);
+                        startActivity(intent);
 
-                        onCreate();
                 }
                 });
                 dialog.setPositiveButton("VER DADOS", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(Listar_todos.this, "Pressionou o botao Sim",Toast.LENGTH_SHORT).show();
+
+
+                      Cursor res = bd.rawQuery("SELECT * FROM usuarios WHERE nome = '" + valorClicado + "'", null);
+
+                        res.moveToFirst();
+
+                        String dados = res.getString(1);
+
+                        String dadosArray[] = new String[4];
+
+//                        dadosArray[0] = res.getString(1);
+//                        dadosArray[1] = res.getString(2);
+//                        dadosArray[2] = res.getString(3);
+//                        dadosArray[3] = res.getString(4);
+
+                        String nome = res.getString(1);
+                        String email = res.getString(2);
+                        String telefone = res.getString(3);
+                        String data = res.getString(4);
+
+                        finish();
+
+                        Intent ver = new Intent(getApplicationContext(),Dados_do_usuario.class);
+
+                        ver.putExtra("nome", nome);
+                        ver.putExtra("email", email);
+                        ver.putExtra("telefone", telefone);
+                        ver.putExtra("data", data);
+
+                        startActivity(ver);
+
                     }
                 });
                 dialog.create();
