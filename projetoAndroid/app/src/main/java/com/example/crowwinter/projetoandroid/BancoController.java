@@ -39,7 +39,6 @@ public class BancoController {
 
         resultado = db.insertOrThrow(Model.TABELA, "null", valores);
 
-
         db.close();
 
         if (resultado == -1) {
@@ -49,18 +48,18 @@ public class BancoController {
         }
     }
 
-    public String[] carregaDados(){
+    public String[] carregaDados() {
         Cursor cursor;
-        String[] campos = {"nome"} ;
+        String[] campos = {"_id", "nome"};
         db = banco.getReadableDatabase();
-        cursor = db.query(true,"usuarios",campos , null, null, null, null, null, null);
+        cursor = db.query(true, "usuarios", campos, null, null, null, null, null, null);
 
 
         String array[] = new String[cursor.getCount()];
-        int i=0;
+        int i = 0;
         cursor.moveToFirst();
-        while(!cursor.isAfterLast()){
-            array[i]=cursor.getString(0);
+        while (!cursor.isAfterLast()) {
+            array[i] = cursor.getString(1);
             i++;
             cursor.moveToNext();
         }

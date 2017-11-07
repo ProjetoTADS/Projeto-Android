@@ -18,12 +18,14 @@ public class Menu_Principal extends Activity {
     }
 
     public void onClick(View v){
+        finish();
         Intent intent = new Intent(this,Cadastrar_novo.class);
         startActivity(intent);
 
 
     }
     public void onClick2(View v){
+        finish();
         Intent intent = new Intent(this,Listar_todos.class);
         startActivity(intent);
 

@@ -18,6 +18,8 @@ public class Cadastrar_novo extends AppCompatActivity {
     private Button btnCadastrar;
     private Button btnVoltar;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,27 +46,30 @@ public class Cadastrar_novo extends AppCompatActivity {
                 String telefoneString = telefone.getText().toString();
                 String nascimentoString = nascimento.getText().toString();
 
-                if(nomeString.equals("")){
-                    Toast.makeText(Cadastrar_novo.this,"Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
+                if(nomeString.equals("") || emailString.equals("") || telefoneString.equals("") || nascimentoString.equals("")) {
+                    if (nomeString.equals("")) {
+                        Toast.makeText(Cadastrar_novo.this, "Preencha o campo nome", Toast.LENGTH_LONG).show();
+                    }
+                    if (emailString.equals("")) {
+                        Toast.makeText(Cadastrar_novo.this, "Preencha o campo email", Toast.LENGTH_LONG).show();
+                    }
+                    if (telefoneString.equals("")) {
+                        Toast.makeText(Cadastrar_novo.this, "Preencha o campo telefone", Toast.LENGTH_LONG).show();
+                    }
+                    if (nascimentoString.equals("")) {
+                        Toast.makeText(Cadastrar_novo.this, "Preencha o campo nascimento", Toast.LENGTH_LONG).show();
+                    }
                 }
-                else if (emailString.equals("")){
-                    Toast.makeText(Cadastrar_novo.this,"Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
+                else {
+
+                    resultado = crud.insereUsuario(nomeString, emailString, telefoneString, nascimentoString);
+
+                    Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
+
+                    finish();
+                    Intent intent = new Intent(getApplicationContext(), Listar_todos.class);
+                    startActivity(intent);
                 }
-                else if (telefoneString.equals("")){
-                    Toast.makeText(Cadastrar_novo.this,"Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
-                }
-                else if (nascimentoString.equals("")){
-                    Toast.makeText(Cadastrar_novo.this,"Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
-                }
-
-
-                resultado = crud.insereUsuario(nomeString,emailString,telefoneString, nascimentoString);
-
-               Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
-
-                finish();
-                Intent intent = new Intent(getApplicationContext(),Listar_todos.class);
-                startActivity(intent);
 
             }
         });
