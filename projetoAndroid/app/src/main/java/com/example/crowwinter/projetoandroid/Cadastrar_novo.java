@@ -2,8 +2,11 @@ package com.example.crowwinter.projetoandroid;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.MaskFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +36,8 @@ public class Cadastrar_novo extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                btnCadastrar.setBackgroundColor(Color.WHITE);
+                btnCadastrar.setTextColor(Color.rgb(03,24,45));
                 BancoController crud = new BancoController(getBaseContext());
                 String resultado;
 
@@ -77,6 +82,8 @@ public class Cadastrar_novo extends AppCompatActivity {
     }
     public void onClickVoltar (View v){
         finish();
+        btnVoltar.setBackgroundColor(Color.WHITE);
+        btnVoltar.setTextColor(Color.rgb(03,24,45));
         Intent i = new Intent(this, Menu_Principal.class);
         startActivity(i);
 

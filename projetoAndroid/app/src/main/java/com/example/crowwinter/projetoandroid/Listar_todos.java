@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,7 +49,6 @@ public class Listar_todos extends AppCompatActivity {
 
         listaitens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
             final String valorClicado = (String) listaitens.getItemAtPosition(i);
 
                 dialog = new AlertDialog.Builder(Listar_todos.this);
@@ -71,7 +71,6 @@ public class Listar_todos extends AppCompatActivity {
                 dialog.setPositiveButton("VER DADOS", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
 
                       Cursor res = bd.rawQuery("SELECT * FROM usuarios WHERE nome = '" + valorClicado + "'", null);
 
@@ -107,6 +106,8 @@ public class Listar_todos extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                btnVoltar.setBackgroundColor(Color.WHITE);
+                btnVoltar.setTextColor(Color.rgb(03,24,45));
                 Intent i = new Intent(getApplicationContext(),Menu_Principal.class);
                 startActivity(i);
             }

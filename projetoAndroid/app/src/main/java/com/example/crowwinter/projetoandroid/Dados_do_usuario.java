@@ -3,6 +3,7 @@ package com.example.crowwinter.projetoandroid;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ public class Dados_do_usuario extends AppCompatActivity {
     private EditText txttelefone;
     private EditText txtdata;
     private Button btnAtualiza;
+    Button btnVolt;
 
 
 
@@ -34,6 +36,7 @@ public class Dados_do_usuario extends AppCompatActivity {
         setContentView(R.layout.activity_dados_do_usuario);
         db = openOrCreateDatabase(Model.NOME_BANCO, MODE_PRIVATE, null);
 
+        btnVolt = (Button) findViewById(R.id.btnVolt);
         txtnome = (EditText)findViewById(R.id.txtNome);
         txtemail = (EditText)findViewById(R.id.txtEmail);
         txttelefone = (EditText)findViewById(R.id.txtTelefone);
@@ -55,6 +58,8 @@ public class Dados_do_usuario extends AppCompatActivity {
         btnAtualiza.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnAtualiza.setBackgroundColor(Color.WHITE);
+                btnAtualiza.setTextColor(Color.rgb(03,24,45));
                 String name = txtnome.getText().toString();
                 String email = txtemail.getText().toString();
                 String telefone = txttelefone.getText().toString();
@@ -86,6 +91,8 @@ public class Dados_do_usuario extends AppCompatActivity {
 
     public void onClickListar (View v){
         finish();
+        btnVolt.setBackgroundColor(Color.WHITE);
+        btnVolt.setTextColor(Color.rgb(03,24,45));
         Intent i = new Intent(this, Listar_todos.class);
         startActivity(i);
 

@@ -9,26 +9,30 @@
 
     <ListView
         android:id="@+id/listViewID"
-        android:layout_width="377dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="22dp"
         android:layout_marginEnd="7dp"
         android:layout_marginTop="16dp"
-        android:background="@android:color/background_light"
+        android:background="@android:color/transparent"
+        android:headerDividersEnabled="false"
+        android:textColor="#032445"
         app:layout_constraintBottom_toTopOf="@+id/btnVoltar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.177" />
 
     <Button
         android:id="@+id/btnVoltar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="54dp"
         android:layout_marginBottom="17dp"
-        android:layout_marginStart="137dp"
-        android:text="Voltar"
+        android:layout_marginStart="112dp"
+        android:background="#032445"
+        android:text="VOLTAR"
+        android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listViewID" />
